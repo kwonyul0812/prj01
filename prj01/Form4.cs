@@ -136,7 +136,6 @@ namespace prj01
             String insertQuery = "INSERT INTO cart(member_no, is_purchased) VALUES (:memberNo, 'N') RETURNING cart_no INTO :newCartNo";
 
             dbc.Comm.CommandText = insertQuery;
-            //dbc.Comm.Parameters.Add("memberNo", dbc.MemberNo);
 
             OracleParameter outputCartNoParam = new OracleParameter("newCartNo", OracleDbType.Int32)
             {

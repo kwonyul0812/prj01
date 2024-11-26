@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,19 +47,35 @@ namespace prj01
             dataGridView1.Columns["item_name"].HeaderText = "상품명";
             dataGridView1.Columns["count"].HeaderText = "개수";
             dataGridView1.Columns["total_price"].HeaderText = "총 가격";
+
+            dataGridView1.Columns[0].Width = 80;
+            dataGridView1.Columns[1].Width = 80;
+            dataGridView1.Columns[2].Width = 120;
+            dataGridView1.Columns[3].Width = 80;
+            dataGridView1.Columns[4].Width = 100;
         }
 
         public int insertOrders()
         {
-            String insertQuery = "INSERT INTO orders (cart_no, order_price) VALUES (:carNo, :orderPrice)";
+            String insertQuery = "INSERT INTO orders (cart_no, order_price) VALUES (:carNo, :orderPrice) RETURNING order_no INTO :newOrderNo";
 
             dbc.Comm.CommandText = insertQuery;
             dbc.Comm.Parameters.Clear();
             dbc.Comm.Parameters.Add("cartNo", cartNo);
             dbc.Comm.Parameters.Add("orderPrice", Convert.ToInt32(orderPriceTxt.Text));
+            OracleParameter outputOrderNo = new OracleParameter("newOrderNo", OracleDbType.Int32)
+            {
+                Direction = ParameterDirection.Output
+            };
+            dbc.Comm.Parameters.Add(outputOrderNo);
             int result = dbc.Comm.ExecuteNonQuery();
 
-            return result;
+            if(result > 0)
+            {
+                return Convert.ToInt32(outputOrderNo.Value.ToString());
+            }
+
+            return 0;
         }
 
         public int updateCart()
@@ -68,6 +85,19 @@ namespace prj01
             dbc.Comm.CommandText = updateQuery;
             dbc.Comm.Parameters.Clear();
             dbc.Comm.Parameters.Add("cartNo", cartNo);
+            int result = dbc.Comm.ExecuteNonQuery();
+
+            return result;
+        }
+
+        public int updateStamp(int count)
+        {
+            String updateQuery = "UPDATE stamp SET count = count + :count WHERE member_no = :memberNo";
+
+            dbc.Comm.CommandText = updateQuery;
+            dbc.Comm.Parameters.Clear();
+            dbc.Comm.Parameters.Add("count", count);
+            dbc.Comm.Parameters.Add("memberNo", dbc.MemberNo);
             int result = dbc.Comm.ExecuteNonQuery();
 
             return result;
@@ -117,11 +147,23 @@ namespace prj01
 
         private void orderBtn_Click(object sender, EventArgs e)
         {
+            int itemCount = 0; // 구매한 상품 총 개수
+            int useStampCount; // 사용할 스탬프 개수
+            bool useStamp = false;
 
-            int result = insertOrders();
-            if (result > 0)
+            int orderNo = insertOrders();
+            if (orderNo > 0)
             {
                 updateCart(); // 구매완료시 해당카트 구매 처리
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    itemCount += Convert.ToInt32(row.Cells[3].Value); // 구매 상품 개수 누적
+                }
+                updateStamp(itemCount); // 구매 개수 만큼 스탬프 적립
+
+                // ******* 적립 소모 여부에 따라 스탬프 적립/소모 내역 반영
+                //insertStampDetail(orderNo, itemCount, useStamp); 
+
                 MessageBox.Show("결제 성공!");
                 this.DialogResult = DialogResult.OK;
             } else

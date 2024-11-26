@@ -28,10 +28,10 @@ namespace prj01
         {
             try
             {
-                string id = IdTextBox.Text;
-                string password = PwTextBox.Text;
-                string name = NameTextBox.Text;
-                string phone = PhoneTextBox.Text;
+                string id = IdTextBox.Text.Trim();
+                string password = PwTextBox.Text.Trim();
+                string name = NameTextBox.Text.Trim();
+                string phone = PhoneTextBox.Text.Trim();
 
 
                 string insertQuery = "INSERT INTO member (id, password, name, phone, member_type_no) VALUES (:id, :password, :name, :phone, 1) RETURNING member_no INTO :newMemberNo";
