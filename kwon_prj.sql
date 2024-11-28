@@ -8,3 +8,10 @@ DELETE FROM orders where cart_no = 2;
 DELETE FROM cart_detail where cart_no = 2;
 commit;
 
+select * from orders;
+delete from orders where order_no > 40 and order_no < 55;
+commit;
+delete from cart where cart_no > 20 and cart_no < 40;
+delete from cart_detail where cart_no > 1;
+
+commit;

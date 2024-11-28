@@ -31,7 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.ownedStampLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.ownedStampLabel);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label2);
@@ -93,16 +93,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "결제 상세";
             // 
-            // label8
+            // ownedStampLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.ForeColor = System.Drawing.Color.Blue;
-            this.label8.Location = new System.Drawing.Point(174, 176);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 18);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "x개 보유";
+            this.ownedStampLabel.AutoSize = true;
+            this.ownedStampLabel.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ownedStampLabel.ForeColor = System.Drawing.Color.Blue;
+            this.ownedStampLabel.Location = new System.Drawing.Point(151, 174);
+            this.ownedStampLabel.Name = "ownedStampLabel";
+            this.ownedStampLabel.Size = new System.Drawing.Size(102, 18);
+            this.ownedStampLabel.TabIndex = 14;
+            this.ownedStampLabel.Text = "x 개 보유중";
             // 
             // label7
             // 
@@ -251,6 +251,6 @@
         private System.Windows.Forms.TextBox orderPriceTxt;
         private System.Windows.Forms.TextBox totalPriceTxt;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label ownedStampLabel;
     }
 }

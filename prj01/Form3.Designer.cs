@@ -70,6 +70,7 @@
             this.스탬프ToolStripMenuItem.Name = "스탬프ToolStripMenuItem";
             this.스탬프ToolStripMenuItem.Size = new System.Drawing.Size(82, 29);
             this.스탬프ToolStripMenuItem.Text = "스탬프";
+            this.스탬프ToolStripMenuItem.Click += new System.EventHandler(this.스탬프ToolStripMenuItem_Click);
             // 
             // 회원정보ToolStripMenuItem
             // 

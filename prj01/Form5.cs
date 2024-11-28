@@ -16,10 +16,10 @@ namespace prj01
     {
         DBClass dbc = new DBClass();
         int cartNo;
-        int totalPrice = 0;
-        int stampUseCount;
-        int orderPrice = 0;
-        int itemCount = 0;
+        int totalPrice = 0; // 총 구매 금액
+        int stampUseCount = 0; // 사용할 스탬프 개수
+        int orderPrice = 0; // 결제금액
+        int ownedStampCount = 0; // 보유중인 스탬프 개수
 
         DataTable dt = new DataTable();
 
@@ -92,26 +92,58 @@ namespace prj01
 
         public int updateStamp(int count)
         {
-            String updateQuery = "UPDATE stamp SET count = count + :count WHERE member_no = :memberNo";
+            String updateQuery = "UPDATE stamp SET count = count + :updateCount WHERE member_no = :memberNo";
 
             dbc.Comm.CommandText = updateQuery;
             dbc.Comm.Parameters.Clear();
-            dbc.Comm.Parameters.Add("count", count);
+            dbc.Comm.Parameters.Add("updateCount", count);
             dbc.Comm.Parameters.Add("memberNo", dbc.MemberNo);
             int result = dbc.Comm.ExecuteNonQuery();
 
             return result;
         }
 
+        public int insertStampDetail(int orderNo, int count, char is_used)
+        {
+            String insertQuery = "INSERT INTO stamp_detail (member_no, order_no, is_used, count) VALUES (:memberNo, :orderNo, :isUsed, :count)";
+
+            dbc.Comm.CommandText = insertQuery;
+            dbc.Comm.Parameters.Clear();
+            dbc.Comm.Parameters.Add("memberNo", dbc.MemberNo);
+            dbc.Comm.Parameters.Add("orderNo", orderNo);
+            dbc.Comm.Parameters.Add("isUsed", is_used);
+            dbc.Comm.Parameters.Add("count", count);
+
+            int result = dbc.Comm.ExecuteNonQuery();
+
+            return result;
+        }
+
+        public void searchStamp(int memberNo)
+        {
+            String selectQuery = "SELECT count FROM stamp WHERE member_no = :memberNo";
+
+            dbc.Comm.CommandText = selectQuery;
+            dbc.Comm.Parameters.Clear();
+            dbc.Comm.Parameters.Add("memberNo", memberNo);
+            dbc.Dr = dbc.Comm.ExecuteReader();
+
+            if(dbc.Dr.Read())
+            {
+                ownedStampCount = (int)dbc.Dr.GetDecimal(0);
+            }
+        }
+
         private void Form5_Load(object sender, EventArgs e)
         {
             searchCartDetail();
+            searchStamp(dbc.MemberNo); // 사용 가능한 스탬프 개수 조회
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                //itemCount += Convert.ToInt32(row.Cells[3].Value); // 구매 상품 개수 (스탬프 적립시 사용)
                 totalPrice += Convert.ToInt32(row.Cells[4].Value);
             }
 
+            ownedStampLabel.Text = ownedStampCount.ToString() + " 개 보유중";
             totalPriceTxt.Text = totalPrice.ToString();
             orderPriceTxt.Text = totalPrice.ToString();
 
@@ -123,11 +155,17 @@ namespace prj01
             if (stampCountTxt.Text != "")
             {
                 stampUseCount = Convert.ToInt32(stampCountTxt.Text);
+                if(stampUseCount > ownedStampCount)
+                {
+                    stampUseCount = ownedStampCount;
+                    stampCountTxt.Text = stampUseCount.ToString();
+                }
                 orderPrice = totalPrice - (150 * stampUseCount);
                 orderPriceTxt.Text = orderPrice.ToString();
             } else
             {
                 orderPriceTxt.Text = totalPrice.ToString();
+                stampUseCount = 0;
             }
         }
 
@@ -147,9 +185,8 @@ namespace prj01
 
         private void orderBtn_Click(object sender, EventArgs e)
         {
-            int itemCount = 0; // 구매한 상품 총 개수
-            int useStampCount; // 사용할 스탬프 개수
-            bool useStamp = false;
+            int buyItemCount = 0; // 구매한 상품 총 개수
+            int updateStampCount = 0; // 반영할 스탬프 개수
 
             int orderNo = insertOrders();
             if (orderNo > 0)
@@ -157,12 +194,16 @@ namespace prj01
                 updateCart(); // 구매완료시 해당카트 구매 처리
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    itemCount += Convert.ToInt32(row.Cells[3].Value); // 구매 상품 개수 누적
+                    buyItemCount += Convert.ToInt32(row.Cells[3].Value); // 구매 상품 개수 누적
                 }
-                updateStamp(itemCount); // 구매 개수 만큼 스탬프 적립
+                if (stampUseCount > 0)
+                { // 사용 스탬프 개수가 0보다 클때
+                    insertStampDetail(orderNo, stampUseCount, 'Y'); // 스탬프 내역에 반영
+                }
+                insertStampDetail(orderNo, buyItemCount, 'N');
 
-                // ******* 적립 소모 여부에 따라 스탬프 적립/소모 내역 반영
-                //insertStampDetail(orderNo, itemCount, useStamp); 
+                updateStampCount = buyItemCount - stampUseCount;
+                updateStamp(updateStampCount); // 스탬프 반영
 
                 MessageBox.Show("결제 성공!");
                 this.DialogResult = DialogResult.OK;

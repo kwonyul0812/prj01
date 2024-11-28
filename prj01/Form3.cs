@@ -15,6 +15,7 @@ namespace prj01
         DBClass dbc = new DBClass();
         Form4 form4; // 상품구매
         Form6 form6; // 구매내역
+        Form7 form7; // 스탬프
         
         public Form3(int memberNo)
         {
@@ -39,11 +40,6 @@ namespace prj01
             }
         }
 
-        private void 회원정보ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void 결제내역ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (form6 == null || form6.IsDisposed)
@@ -53,5 +49,18 @@ namespace prj01
                 form6.Show();
             }
         }
+
+        private void 스탬프ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+                form7 = new Form7(dbc.MemberNo);
+                form7.ShowDialog();
+        }
+
+        private void 회원정보ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
