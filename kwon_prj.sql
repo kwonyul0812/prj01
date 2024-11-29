@@ -14,4 +14,16 @@ commit;
 delete from cart where cart_no > 20 and cart_no < 40;
 delete from cart_detail where cart_no > 1;
 
-commit;
+
+SELECT o.order_no, o.cart_no, TO_CHAR(o.order_date, 'YYYY-MM-DD') AS order_date, o.order_price 
+                                    FROM orders o 
+                                    JOIN cart c ON o.cart_no = c.cart_no 
+                                    WHERE c.member_no = 24 
+                                    AND o.order_date BETWEEN TO_DATE('2024-11-21', 'YYYY-MM-DD') AND TO_DATE('2024-11-28 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+                                    ORDER BY o.order_no DESC;
+                                    
+SELECT o.order_no, o.cart_no, TO_CHAR(o.order_date, 'YYYY-MM-DD') AS order_date, o.order_price 
+FROM orders o 
+JOIN cart c ON o.cart_no = c.cart_no 
+WHERE c.member_no = 24
+ORDER BY o.order_no DESC;

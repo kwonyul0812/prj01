@@ -63,6 +63,7 @@ namespace prj01
                 dataGridView1.Columns["order_price"].HeaderText = "결제금액";
             }
         }
+
         public void searchCartDetail(int cartNo)
         {
             String selectQuery = @"SELECT i.item_no, sc.name AS sub_category_name, i.name AS item_name, cd.count, cd.total_price 
@@ -116,7 +117,7 @@ namespace prj01
             if (value != null && value != DBNull.Value)
             {
                 cartNo = Convert.ToInt32(value);
-                searchCartDetail(cartNo);
+                searchCartDetail(cartNo); // 구매상세
             }
 
         }

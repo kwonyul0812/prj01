@@ -296,12 +296,30 @@ namespace prj01
             return result;
         }
 
+        public void searchMemberNickName()
+        {
+            String selectQuery = @"SELECT name From member
+                                    WHERE member_no = :memberNo";
+            dbc.Comm.CommandText = selectQuery;
+            dbc.Comm.Parameters.Clear();
+            dbc.Comm.Parameters.Add("memberNo", dbc.MemberNo);
+            dbc.Dr = dbc.Comm.ExecuteReader();
+
+            if(dbc.Dr.Read())
+            {
+                String name = dbc.Dr[0].ToString();
+                memberNameLabel.Text = name + " 님 환영합니다";
+
+                int rightBoundary = 820;
+                memberNameLabel.Location = new Point(rightBoundary - memberNameLabel.Width, memberNameLabel.Location.Y);
+            }
+        }
 
         private void Form4_Load(object sender, EventArgs e)
         {
             // 장바구니 상세 조회
             searchCartDetail();
-
+            searchMemberNickName();
         }
 
         private void McComboBox_SelectedIndexChanged(object sender, EventArgs e)

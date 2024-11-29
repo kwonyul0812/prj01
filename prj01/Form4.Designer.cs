@@ -56,6 +56,7 @@
             this.clearCDBtn = new System.Windows.Forms.Button();
             this.deleteCDBtn = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.memberNameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -96,14 +97,14 @@
             // 
             // SearchTextBox
             // 
-            this.SearchTextBox.Location = new System.Drawing.Point(422, 50);
+            this.SearchTextBox.Location = new System.Drawing.Point(422, 27);
             this.SearchTextBox.Name = "SearchTextBox";
             this.SearchTextBox.Size = new System.Drawing.Size(187, 28);
             this.SearchTextBox.TabIndex = 7;
             // 
             // SearchBtn
             // 
-            this.SearchBtn.Location = new System.Drawing.Point(626, 46);
+            this.SearchBtn.Location = new System.Drawing.Point(626, 23);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(103, 33);
             this.SearchBtn.TabIndex = 6;
@@ -114,7 +115,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(354, 53);
+            this.label3.Location = new System.Drawing.Point(354, 30);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 18);
             this.label3.TabIndex = 4;
@@ -179,16 +180,16 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.itemNoTxtBox);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(842, 12);
+            this.groupBox3.Location = new System.Drawing.Point(848, 160);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(405, 464);
+            this.groupBox3.Size = new System.Drawing.Size(405, 363);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "상품정보";
             // 
             // txtClearBtn
             // 
-            this.txtClearBtn.Location = new System.Drawing.Point(49, 365);
+            this.txtClearBtn.Location = new System.Drawing.Point(56, 300);
             this.txtClearBtn.Name = "txtClearBtn";
             this.txtClearBtn.Size = new System.Drawing.Size(145, 37);
             this.txtClearBtn.TabIndex = 11;
@@ -198,7 +199,7 @@
             // 
             // addCartBtn
             // 
-            this.addCartBtn.Location = new System.Drawing.Point(206, 365);
+            this.addCartBtn.Location = new System.Drawing.Point(213, 300);
             this.addCartBtn.Name = "addCartBtn";
             this.addCartBtn.Size = new System.Drawing.Size(145, 37);
             this.addCartBtn.TabIndex = 10;
@@ -209,7 +210,7 @@
             // priceTxtBox
             // 
             this.priceTxtBox.BackColor = System.Drawing.SystemColors.Window;
-            this.priceTxtBox.Location = new System.Drawing.Point(147, 233);
+            this.priceTxtBox.Location = new System.Drawing.Point(147, 194);
             this.priceTxtBox.Name = "priceTxtBox";
             this.priceTxtBox.ReadOnly = true;
             this.priceTxtBox.Size = new System.Drawing.Size(185, 28);
@@ -218,7 +219,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(55, 236);
+            this.label8.Location = new System.Drawing.Point(55, 197);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(86, 18);
             this.label8.TabIndex = 8;
@@ -226,7 +227,7 @@
             // 
             // countTxtBox
             // 
-            this.countTxtBox.Location = new System.Drawing.Point(147, 280);
+            this.countTxtBox.Location = new System.Drawing.Point(147, 241);
             this.countTxtBox.Name = "countTxtBox";
             this.countTxtBox.Size = new System.Drawing.Size(185, 28);
             this.countTxtBox.TabIndex = 7;
@@ -235,7 +236,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(97, 283);
+            this.label7.Location = new System.Drawing.Point(97, 244);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 18);
             this.label7.TabIndex = 6;
@@ -244,7 +245,7 @@
             // itemNameTxtBox
             // 
             this.itemNameTxtBox.BackColor = System.Drawing.SystemColors.Window;
-            this.itemNameTxtBox.Location = new System.Drawing.Point(147, 184);
+            this.itemNameTxtBox.Location = new System.Drawing.Point(147, 145);
             this.itemNameTxtBox.Name = "itemNameTxtBox";
             this.itemNameTxtBox.ReadOnly = true;
             this.itemNameTxtBox.Size = new System.Drawing.Size(185, 28);
@@ -253,7 +254,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(79, 187);
+            this.label6.Location = new System.Drawing.Point(79, 148);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 18);
             this.label6.TabIndex = 4;
@@ -262,7 +263,7 @@
             // scNameTxtBox
             // 
             this.scNameTxtBox.BackColor = System.Drawing.SystemColors.Window;
-            this.scNameTxtBox.Location = new System.Drawing.Point(147, 133);
+            this.scNameTxtBox.Location = new System.Drawing.Point(147, 94);
             this.scNameTxtBox.Name = "scNameTxtBox";
             this.scNameTxtBox.ReadOnly = true;
             this.scNameTxtBox.Size = new System.Drawing.Size(185, 28);
@@ -271,7 +272,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(79, 136);
+            this.label5.Location = new System.Drawing.Point(79, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 18);
             this.label5.TabIndex = 2;
@@ -280,7 +281,7 @@
             // itemNoTxtBox
             // 
             this.itemNoTxtBox.BackColor = System.Drawing.SystemColors.Window;
-            this.itemNoTxtBox.Location = new System.Drawing.Point(147, 79);
+            this.itemNoTxtBox.Location = new System.Drawing.Point(147, 40);
             this.itemNoTxtBox.Name = "itemNoTxtBox";
             this.itemNoTxtBox.ReadOnly = true;
             this.itemNoTxtBox.Size = new System.Drawing.Size(185, 28);
@@ -289,7 +290,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 82);
+            this.label4.Location = new System.Drawing.Point(61, 43);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 18);
             this.label4.TabIndex = 0;
@@ -352,11 +353,22 @@
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
+            // memberNameLabel
+            // 
+            this.memberNameLabel.AutoSize = true;
+            this.memberNameLabel.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.memberNameLabel.Location = new System.Drawing.Point(944, 67);
+            this.memberNameLabel.Name = "memberNameLabel";
+            this.memberNameLabel.Size = new System.Drawing.Size(228, 24);
+            this.memberNameLabel.TabIndex = 4;
+            this.memberNameLabel.Text = "권율 님 환영합니다";
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1314, 904);
+            this.Controls.Add(this.memberNameLabel);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -374,6 +386,7 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -407,5 +420,6 @@
         private System.Windows.Forms.Button clearCDBtn;
         private System.Windows.Forms.Button deleteCDBtn;
         private System.Windows.Forms.Button buyBtn;
+        private System.Windows.Forms.Label memberNameLabel;
     }
 }
