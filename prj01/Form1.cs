@@ -23,6 +23,40 @@ namespace prj01
             dbc.DB_Access(); // db 연결
         }
 
+        public void login(String id, String password, int loginType)
+        {
+            String selectQuery = @"SELECT member_no FROM member 
+                                    WHERE id = :id AND password = :password AND member_type_no = :memberTypeNo";
+
+            dbc.Comm.CommandText = selectQuery;
+            dbc.Comm.Parameters.Clear();
+            dbc.Comm.Parameters.Add("id", id);
+            dbc.Comm.Parameters.Add("password", password);
+            dbc.Comm.Parameters.Add("memberTypeNo", loginType);
+            dbc.Dr = dbc.Comm.ExecuteReader();
+
+            if(dbc.Dr.Read())
+            {
+                dbc.MemberNo = (int)dbc.Dr.GetDecimal(0);
+                if (loginType == 1)
+                {
+                    Form3 form3 = new Form3(dbc.MemberNo);
+                    form3.ShowDialog();
+                }
+                if(loginType == 2)
+                {
+                    Form9 form9 = new Form9();
+                    form9.ShowDialog();
+                }
+
+            } else
+            {
+                MessageBox.Show("로그인 정보를 확인해주세요");
+            }
+
+
+        }
+
         private void createAccoutBtn_Click(object sender, EventArgs e) 
         { // 회원 가입 버튼 클릭
             Form2 form2 = new Form2();
@@ -34,29 +68,17 @@ namespace prj01
             String id = IdTextBox.Text;
             String password = PwTextBox.Text;
 
-            String selectQuery = "SELECT member_no, id, password FROM member";
-
-            dbc.Comm.CommandText = selectQuery;
-            dbc.Dr = dbc.Comm.ExecuteReader();
-            
-
-            while (dbc.Dr.Read())
+            if (radioButton1.Checked) // 관리자 로그인시
             {
-                if(dbc.Dr.GetString(1).Equals(id) && dbc.Dr.GetString(2).Equals(password))
-                {
-                    dbc.MemberNo = (int)dbc.Dr.GetDecimal(0);
-                    Form3 form3 = new Form3(dbc.MemberNo);
-                    form3.ShowDialog();
-                    loginCheck = true;
-                    break;
-                }
-                loginCheck = false;
+                login(id, password, 2);
             }
-            if (!loginCheck) // 로그인 실패시
+            else if (radioButton2.Checked) // 일반회원 로그인시
             {
-                MessageBox.Show("로그인 정보를 확인해주세요");
+                login(id, password, 1);
+            } else
+            {
+                MessageBox.Show("로그인 유형을 선택해주세요");
             }
-
         }
     }
 }

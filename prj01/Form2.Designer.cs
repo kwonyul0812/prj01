@@ -59,6 +59,7 @@
             this.PwTextBox.Name = "PwTextBox";
             this.PwTextBox.Size = new System.Drawing.Size(193, 28);
             this.PwTextBox.TabIndex = 29;
+            this.PwTextBox.UseSystemPasswordChar = true;
             // 
             // IdTextBox
             // 

@@ -35,12 +35,14 @@
             this.PwTextBox = new System.Windows.Forms.TextBox();
             this.IdTextBox = new System.Windows.Forms.TextBox();
             this.createAccoutBtn = new System.Windows.Forms.Button();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(159, 31);
+            this.label1.Location = new System.Drawing.Point(179, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(213, 64);
@@ -51,7 +53,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 150);
+            this.label2.Location = new System.Drawing.Point(67, 171);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 18);
@@ -61,7 +63,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(76, 202);
+            this.label3.Location = new System.Drawing.Point(67, 223);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 18);
@@ -70,7 +72,7 @@
             // 
             // LoginBtn
             // 
-            this.LoginBtn.Location = new System.Drawing.Point(405, 150);
+            this.LoginBtn.Location = new System.Drawing.Point(396, 165);
             this.LoginBtn.Margin = new System.Windows.Forms.Padding(4);
             this.LoginBtn.Name = "LoginBtn";
             this.LoginBtn.Size = new System.Drawing.Size(106, 84);
@@ -81,7 +83,7 @@
             // 
             // PwTextBox
             // 
-            this.PwTextBox.Location = new System.Drawing.Point(175, 202);
+            this.PwTextBox.Location = new System.Drawing.Point(166, 223);
             this.PwTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PwTextBox.Name = "PwTextBox";
             this.PwTextBox.Size = new System.Drawing.Size(193, 28);
@@ -90,7 +92,7 @@
             // 
             // IdTextBox
             // 
-            this.IdTextBox.Location = new System.Drawing.Point(175, 150);
+            this.IdTextBox.Location = new System.Drawing.Point(166, 171);
             this.IdTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.IdTextBox.Name = "IdTextBox";
             this.IdTextBox.Size = new System.Drawing.Size(193, 28);
@@ -98,7 +100,7 @@
             // 
             // createAccoutBtn
             // 
-            this.createAccoutBtn.Location = new System.Drawing.Point(216, 280);
+            this.createAccoutBtn.Location = new System.Drawing.Point(208, 288);
             this.createAccoutBtn.Name = "createAccoutBtn";
             this.createAccoutBtn.Size = new System.Drawing.Size(98, 29);
             this.createAccoutBtn.TabIndex = 26;
@@ -106,11 +108,35 @@
             this.createAccoutBtn.UseVisualStyleBackColor = true;
             this.createAccoutBtn.Click += new System.EventHandler(this.createAccoutBtn_Click);
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(163, 118);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(87, 22);
+            this.radioButton1.TabIndex = 27;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "관리자";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(267, 118);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(105, 22);
+            this.radioButton2.TabIndex = 28;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "일반회원";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(561, 366);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.createAccoutBtn);
             this.Controls.Add(this.PwTextBox);
             this.Controls.Add(this.IdTextBox);
@@ -134,6 +160,8 @@
         private System.Windows.Forms.TextBox PwTextBox;
         private System.Windows.Forms.TextBox IdTextBox;
         private System.Windows.Forms.Button createAccoutBtn;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
 
