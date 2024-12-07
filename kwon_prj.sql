@@ -27,3 +27,9 @@ FROM orders o
 JOIN cart c ON o.cart_no = c.cart_no 
 WHERE c.member_no = 24
 ORDER BY o.order_no DESC;
+
+INSERT INTO member(id, password, name, phone, member_type_no) VALUES ('admin', '1234', '관리자', '010-1234-1234', 2);
+commit;
+
+ALTER TABLE item ADD (stock NUMBER DEFAULT 0);
+commit;
