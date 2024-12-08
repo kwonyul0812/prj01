@@ -4,7 +4,7 @@ DROP SEQUENCE item_sequence
 /
 DROP TRIGGER item_trigger
 /
-CREATE TABLE item(item_no NUMBER PRIMARY KEY, sub_category_no NUMBER NOT NULL, name VARCHAR(30) NOT NULL, price NUMBER NOT NULL, stock NUMBER DEFAULT 0, FOREIGN KEY (sub_category_no) REFERENCES sub_category(sub_category_no))
+CREATE TABLE item(item_no NUMBER PRIMARY KEY, sub_category_no NUMBER NOT NULL, name VARCHAR(30) NOT NULL, price NUMBER NOT NULL, stock NUMBER DEFAULT 0, delCheck NUMBER DEFAULT 0, FOREIGN KEY (sub_category_no) REFERENCES sub_category(sub_category_no))
 /
 CREATE SEQUENCE item_sequence START WITH 1 INCREMENT BY 1
 /

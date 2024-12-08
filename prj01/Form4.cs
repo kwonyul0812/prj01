@@ -75,7 +75,7 @@ namespace prj01
 
         public void searchItem()
         {
-            String selectQuery = "SELECT i.item_no, sc.name AS sub_category_name, i.name AS item_name, i.price FROM item i JOIN sub_category sc ON i.sub_category_no = sc.sub_category_no ";
+            String selectQuery = "SELECT i.item_no, sc.name AS sub_category_name, i.name AS item_name, i.price FROM item i JOIN sub_category sc ON i.sub_category_no = sc.sub_category_no WHERE i.delCheck = 0 ";
 
             dbc.Comm.CommandText = selectQuery;
             dbc.Dr = dbc.Comm.ExecuteReader();
@@ -95,7 +95,7 @@ namespace prj01
             if (selectedItem is ComboBoxItem sc)
             {
 
-                String selectQuery = "SELECT i.item_no, sc.name AS sub_category_name, i.name AS item_name, i.price FROM item i JOIN sub_category sc ON i.sub_category_no = sc.sub_category_no WHERE i.sub_category_no =" + sc.Value + "AND i.name LIKE '%" + searchText + "%'";
+                String selectQuery = "SELECT i.item_no, sc.name AS sub_category_name, i.name AS item_name, i.price FROM item i JOIN sub_category sc ON i.sub_category_no = sc.sub_category_no WHERE i.delCheck = 0 AND i.sub_category_no =" + sc.Value + "AND i.name LIKE '%" + searchText + "%'";
 
                 dbc.Comm.CommandText = selectQuery;
                 dbc.Dr = dbc.Comm.ExecuteReader();

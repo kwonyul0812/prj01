@@ -57,25 +57,5 @@ namespace prj01
         //    dt = new DataTable();
         //}
 
-        public void DB_Open()
-        {
-            try
-            {
-                string conStr = "User Id = kwon; Password = 1234; Data Source = (DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521))(CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe))); ";
-
-                conn = new OracleConnection(conStr);
-                da = new OracleDataAdapter();
-                comm = new OracleCommand();
-                comm.Connection = conn;
-                conn.Open();
-
-                ds = new DataSet();
-                
-            }
-            catch (DataException DE)
-            {
-                MessageBox.Show(DE.Message);
-            }
-        }
     }
 }

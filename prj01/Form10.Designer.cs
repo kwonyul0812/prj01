@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.priceTxtBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.countTxtBox = new System.Windows.Forms.TextBox();
+            this.stockTxtBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.itemNameTxtBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,9 +58,9 @@
             this.priceTxtBox.BackColor = System.Drawing.SystemColors.Window;
             this.priceTxtBox.Location = new System.Drawing.Point(190, 288);
             this.priceTxtBox.Name = "priceTxtBox";
-            this.priceTxtBox.ReadOnly = true;
             this.priceTxtBox.Size = new System.Drawing.Size(185, 28);
             this.priceTxtBox.TabIndex = 19;
+            this.priceTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.priceTxtBox_KeyPress);
             // 
             // label8
             // 
@@ -71,12 +71,13 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "개당 가격";
             // 
-            // countTxtBox
+            // stockTxtBox
             // 
-            this.countTxtBox.Location = new System.Drawing.Point(190, 335);
-            this.countTxtBox.Name = "countTxtBox";
-            this.countTxtBox.Size = new System.Drawing.Size(185, 28);
-            this.countTxtBox.TabIndex = 17;
+            this.stockTxtBox.Location = new System.Drawing.Point(190, 335);
+            this.stockTxtBox.Name = "stockTxtBox";
+            this.stockTxtBox.Size = new System.Drawing.Size(185, 28);
+            this.stockTxtBox.TabIndex = 17;
+            this.stockTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.stockTxtBox_KeyPress);
             // 
             // label7
             // 
@@ -92,7 +93,6 @@
             this.itemNameTxtBox.BackColor = System.Drawing.SystemColors.Window;
             this.itemNameTxtBox.Location = new System.Drawing.Point(190, 239);
             this.itemNameTxtBox.Name = "itemNameTxtBox";
-            this.itemNameTxtBox.ReadOnly = true;
             this.itemNameTxtBox.Size = new System.Drawing.Size(185, 28);
             this.itemNameTxtBox.TabIndex = 15;
             // 
@@ -122,6 +122,7 @@
             this.OkBtn.TabIndex = 20;
             this.OkBtn.Text = "추가";
             this.OkBtn.UseVisualStyleBackColor = true;
+            this.OkBtn.Click += new System.EventHandler(this.OkBtn_Click);
             // 
             // CancelBtn
             // 
@@ -131,6 +132,7 @@
             this.CancelBtn.TabIndex = 21;
             this.CancelBtn.Text = "취소";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // label2
             // 
@@ -156,6 +158,7 @@
             this.McComboBox.Name = "McComboBox";
             this.McComboBox.Size = new System.Drawing.Size(182, 26);
             this.McComboBox.TabIndex = 23;
+            this.McComboBox.SelectedIndexChanged += new System.EventHandler(this.McComboBox_SelectedIndexChanged);
             // 
             // Form10
             // 
@@ -169,7 +172,7 @@
             this.Controls.Add(this.OkBtn);
             this.Controls.Add(this.priceTxtBox);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.countTxtBox);
+            this.Controls.Add(this.stockTxtBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.itemNameTxtBox);
             this.Controls.Add(this.label6);
@@ -188,7 +191,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox priceTxtBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox countTxtBox;
+        private System.Windows.Forms.TextBox stockTxtBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox itemNameTxtBox;
         private System.Windows.Forms.Label label6;

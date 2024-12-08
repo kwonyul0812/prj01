@@ -33,3 +33,10 @@ commit;
 
 ALTER TABLE item ADD (stock NUMBER DEFAULT 0);
 commit;
+
+ALTER TABLE item ADD (delCheck NUMBER DEFAULT 0);
+commit;
+
+SELECT i.name AS item_name, i.price, i.stock, mc.name AS major_name, sc.name AS sub_name  FROM item i
+JOIN sub_category sc ON i.sub_category_no = sc.sub_category_no
+JOIN major_category mc ON sc.major_category_no = mc.major_category_no;

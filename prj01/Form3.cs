@@ -16,6 +16,7 @@ namespace prj01
         Form4 form4; // 상품구매
         Form6 form6; // 구매내역
         Form7 form7; // 스탬프
+        Form8 form8; // 회원정보 수정
         
         public Form3(int memberNo)
         {
@@ -58,7 +59,8 @@ namespace prj01
 
         private void 회원정보ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            form8 = new Form8(dbc.MemberNo);
+            form8.ShowDialog();
         }
 
 
