@@ -1,4 +1,0 @@
-DROP TABLE sold_item PURGE
-/
-CREATE TABLE sold_item(item_no NUMBER PRIMARY KEY, count NUMBER NOT NULL DEFAULT 0)
-/
