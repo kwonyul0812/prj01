@@ -68,6 +68,9 @@ namespace prj01
 
                 label1.Text = name + "님은 현재";
                 label2.Text = count + "개 보유중 입니다.";
+
+                int rightBoundary = 180;
+                label1.Location = new Point(rightBoundary - label1.Width, label1.Location.Y);
             }
 
         }
